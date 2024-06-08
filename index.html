@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Arham Jain's personal website showcasing biography, publications, and research interests.">
-    <meta name="keywords" content="Arham Jain, biography, publications, research, personal website">
-    <meta name="author" content="Arham Jain">
-    <title>Arham Jain</title>
+    <meta name="description" content="WebTechCode's personal website showcasing projects and contact information.">
+    <meta name="keywords" content="WebTechCode, projects, contact, personal website">
+    <meta name="author" content="WebTechCode">
+    <title>WebTechCode</title>
     <!-- Animate.css for Animations -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
     <!-- Hover.css for Hover Effects -->
@@ -19,25 +19,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Particles.js for background animation -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0"></script>
     <style>
         /* General Styles */
         :root {
-            --primary-color: #007bff; /* Change primary color to blue */
-            --secondary-color: #00cccc; /* Change secondary color to a lighter shade of blue */
-            --dark-bg: #333;
-            --dark-text: #fff;
-            --light-bg: #f5f7fa;
-            --light-text: #333;
-        }
-
-        [data-theme="dark"] {
-            --bg-color: var(--dark-bg);
-            --text-color: var(--dark-text);
-        }
-
-        [data-theme="light"] {
-            --bg-color: var(--light-bg);
-            --text-color: var(--light-text);
+            --primary-color: #1e90ff; /* DodgerBlue */
+            --secondary-color: #00ced1; /* DarkTurquoise */
+            --bg-color: #121212; /* Dark Background */
+            --text-color: #e0e0e0; /* Light Text */
         }
 
         html {
@@ -52,7 +42,15 @@
             color: var(--text-color);
             line-height: 1.6;
             font-size: 16px;
-            transition: background-color 0.3s, color 0.3s;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
 
         header {
@@ -63,8 +61,8 @@
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;
             box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-            position: relative; /* Added */
-            overflow: hidden; /* Added */
+            position: relative;
+            overflow: hidden;
         }
 
         header::before {
@@ -75,7 +73,7 @@
             width: 100%;
             height: 100%;
             background: rgba(255, 255, 255, 0.1);
-            animation: animateBackground 20s linear infinite; /* Added */
+            animation: animateBackground 20s linear infinite;
             pointer-events: none;
         }
 
@@ -84,11 +82,26 @@
             100% { background-position: 100% 0; }
         }
 
-        header svg {
+        header img {
             width: 80px;
             height: 80px;
-            margin-bottom: 20px;
-            fill: white;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        header img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 10px 0;
+        }
+
+        header p {
+            font-size: 18px;
         }
 
         nav {
@@ -122,14 +135,11 @@
 
         section {
             padding: 30px 20px;
-            background-color: #fff;
+            background-color: #1c1c1c; /* Slightly lighter dark background */
             margin: 20px auto;
             max-width: 800px;
             box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
             border-radius: 15px;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
         }
 
         h1 {
@@ -149,12 +159,13 @@
         }
 
         footer {
-            background-color: var(--dark-bg);
-            color: var(--dark-text);
+            background-color: #000;
+            color: var(--text-color);
             text-align: center;
             padding: 20px 0;
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
+            margin-top: 20px;
         }
 
         /* Back to Top Button */
@@ -179,45 +190,20 @@
             transform: scale(1.1);
         }
 
-        /* Dark Mode Toggle */
-        #darkModeToggle {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--primary-color);
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 18px;
-            box-shadow: 0px 3px 6px rgba(63, 61, 61, 0.1);
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        #darkModeToggle:hover {
-            background-color: #1a6bc2;
-            transform: scale(1.1);
-        }
-
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 12px;
         }
 
         ::-webkit-scrollbar-track {
-            background: #f0f0f0;
+            background: #1c1c1c;
             border-radius: 10px;
         }
 
         ::-webkit-scrollbar-thumb {
             background: var(--primary-color);
             border-radius: 10px;
-            border: 3px solid #f0f0f0;
+            border: 3px solid #1c1c1c;
         }
 
         ::-webkit-scrollbar-thumb:hover {
@@ -250,42 +236,45 @@
         }
     </style>
 </head>
-<body data-theme="light">
+<body>
+<div id="particles-js"></div>
+
 <header>
-    <img src="2d5964fc-7c90-4654-b113-2b307d6c0e31.png" alt="img">
-    <h1 class="animate__animated animate__heartBeat">Arham Jain</h1> <!-- Added animation -->
-    <p>Welcome to my personal website</p>
+    <img src="webtechcode.gif" alt="img">
+    <h1 class="animate__animated animate__heartBeat">WebTechCode</h1> <!-- Added animation -->
+    <p>Welcome to my website</p>
 </header>
 
 <nav>
-    <a href="#bio" class="hvr-grow">Biography</a>
-    <a href="#publications" class="hvr-grow">Publications</a>
-    <a href="#research" class="hvr-grow">Research Interests</a>
+    <a href="#about-me" class="hvr-grow">About Me</a>
+    <a href="#projects" class="hvr-grow">Projects</a>
+    <a href="#contact-me" class="hvr-grow">Contact Me</a>
 </nav>
 
-<section id="bio">
-    <h2 class="animate__animated animate__fadeIn">Biography</h2>
-    <p class="animate__animated animate__fadeIn">This is a description of my biography.</p>
+<section id="about-me">
+    <h2 class="animate__animated animate__fadeIn">About Me</h2>
+    <p class="animate__animated animate__fadeIn"> I am a UI & UX Devloper </p>
 </section>
 
-<section id="publications">
-    <h2 class="animate__animated animate__fadeIn">Publications</h2>
-    <p class="animate__animated animate__fadeIn">List of publications.</p>
+<section id="projects">
+    <h2 class="animate__animated animate__fadeIn">Projects</h2>
+    <p class="animate__animated animate__fadeIn">List of projects are :<br>
+    I made a website for a Youtuber :AcaDhrix -<a href=" https://www.youtube.com/channel/UCKK2aV6a11B0x1W053z6V4A ">Youtuber</a><br>
+     <a href="https://webtechcode1122.github.io/acadhrix/">website of AcaDhrix </a>
+    </p>
 </section>
 
-<section id="research">
-    <h2 class="animate__animated animate__fadeIn">Research Interests</h2>
-    <p class="animate__animated animate__fadeIn">List of research interests.</p>
+<section id="contact-me">
+    <h2 class="animate__animated animate__fadeIn">Contact Me</h2>
+    <p class="animate__animated animate__fadeIn">you can contact me on gmail-
+        <br> arhamjain19609@gmail.com
+    </p>
 </section>
-
-<div style="height: 150px;"></div> <!-- Added space for image -->
 
 <button id="backToTop">Back to Top</button>
 
-<button id="darkModeToggle" aria-label="Toggle dark mode">🌙</button>
-
 <footer>
-    <p>&copy; 2024 Arham Jain</p>
+    <p>&copy; 2024 WebTechCode</p>
 </footer>
 
 <script>
@@ -300,7 +289,7 @@
         delay: 1
     });
 
-    gsap.from(".animate__heartBeat", { // Added
+    gsap.from(".animate__heartBeat", {
         duration: 1,
         scale: 0.5,
         opacity: 0,
@@ -336,6 +325,118 @@
         distance: '50px',
         delay: 200,
         reset: true
+    });
+
+    // Particles.js configuration
+    particlesJS('particles-js', {
+        "particles": {
+            "number": {
+                "value": 80,
+                "density": {
+                    "enable": true,
+                    "value_area": 800
+                }
+            },
+            "color": {
+                "value": "#ffffff"
+            },
+            "shape": {
+                "type": "circle",
+                "stroke": {
+                    "width": 0,
+                    "color": "#000000"
+                },
+                "polygon": {
+                    "nb_sides": 5
+                },
+                "image": {
+                    "src": "img/github.svg",
+                    "width": 100,
+                    "height": 100
+                }
+            },
+            "opacity": {
+                "value": 0.5,
+                "random": false,
+                "anim": {
+                    "enable": false,
+                    "speed": 1,
+                    "opacity_min": 0.1,
+                    "sync": false
+                }
+            },
+            "size": {
+                "value": 3,
+                "random": true,
+                "anim": {
+                    "enable": false,
+                    "speed": 40,
+                    "size_min": 0.1,
+                    "sync": false
+                }
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 150,
+                "color": "#ffffff",
+                "opacity": 0.4,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 6,
+                "direction": "none",
+                "random": false,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                    "enable": false,
+                    "rotateX": 600,
+                    "rotateY": 1200
+                }
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": true,
+                    "mode": "repulse"
+                },
+                "onclick": {
+                    "enable": true,
+                    "mode": "push"
+                },
+                "resize": true
+            },
+            "modes": {
+                "grab": {
+                    "distance": 400,
+                    "line_linked": {
+                        "opacity": 1
+                    }
+                },
+                "bubble": {
+                    "distance": 400,
+                    "size": 40,
+                    "duration": 2,
+                    "opacity": 8,
+                    "speed": 3
+                },
+                "repulse": {
+                    "distance": 200,
+                    "duration": 0.4
+                },
+                "push": {
+                    "particles_nb": 4
+                },
+                "remove": {
+                    "particles_nb": 2
+                }
+            }
+        },
+        "retina_detect": true
     });
 </script>
 </body>
