@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,7 @@
     <!-- Animate.css for Animations -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
     <!-- Hover.css for Hover Effects -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" />
     <!-- GSAP for Advanced Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <!-- ScrollReveal.js for Scroll Animations -->
@@ -24,10 +25,22 @@
     <style>
         /* General Styles */
         :root {
-            --primary-color: #1e90ff; /* DodgerBlue */
-            --secondary-color: #00ced1; /* DarkTurquoise */
-            --bg-color: #121212; /* Dark Background */
-            --text-color: #e0e0e0; /* Light Text */
+            --primary-color: #1e90ff;
+            --secondary-color: #00ced1;
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --bg-light-color: #ffffff;
+            --text-light-color: #000000;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+        }
+
+        [data-theme="light"] {
+            --bg-color: var(--bg-light-color);
+            --text-color: var(--text-light-color);
         }
 
         html {
@@ -44,6 +57,7 @@
             font-size: 16px;
             position: relative;
             overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         #particles-js {
@@ -78,8 +92,13 @@
         }
 
         @keyframes animateBackground {
-            0% { background-position: 0 0; }
-            100% { background-position: 100% 0; }
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 100% 0;
+            }
         }
 
         header img {
@@ -135,7 +154,7 @@
 
         section {
             padding: 30px 20px;
-            background-color: #1c1c1c; /* Slightly lighter dark background */
+            background-color: #1c1c1c;
             margin: 20px auto;
             max-width: 800px;
             box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
@@ -172,7 +191,7 @@
         #backToTop {
             position: fixed;
             bottom: 30px;
-            left: 30px;
+            right: 30px;
             display: none;
             background-color: var(--primary-color);
             color: #fff;
@@ -186,6 +205,27 @@
         }
 
         #backToTop:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        /* Dark Mode Toggle Button */
+        #darkModeToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #darkModeToggle:hover {
             background-color: #0056b3;
             transform: scale(1.1);
         }
@@ -234,211 +274,219 @@
                 flex-direction: row;
             }
         }
-        
     </style>
 </head>
-<body>
-<div id="particles-js"></div>
 
-<header>
-    <img src="webtechcode.gif" alt="img">
-    <h1 class="animate__animated animate__heartBeat">WebTechCode</h1> <!-- Added animation -->
-    <p>Welcome to my website</p>
-</header>
+<body data-theme="dark">
+    <div id="particles-js"></div>
 
-<nav>
-    <a href="#about-me" class="hvr-grow">About Me</a>
-    <a href="#projects" class="hvr-grow">Projects</a>
-    <a href="#contact-me" class="hvr-grow">Contact Me</a>
-</nav>
+    <header>
+        <img src="webtechcode.gif" alt="WebTechCode Logo">
+        <h1 class="animate__animated animate__heartBeat">WebTechCode</h1>
+        <p>Welcome to my website</p>
+    </header>
 
-<section id="about-me">
-    <h2 class="animate__animated animate__fadeIn">About Me</h2>
-    <p class="animate__animated animate__fadeIn"> I am a UI & UX Devloper </p>
-</section>
+    <nav>
+        <a href="#about-me" class="hvr-grow">About Me</a>
+        <a href="#projects" class="hvr-grow">Projects</a>
+        <a href="#contact-me" class="hvr-grow">Contact Me</a>
+    </nav>
 
-<section id="projects">
-    <h2 class="animate__animated animate__fadeIn">Projects</h2>
-    <p class="animate__animated animate__fadeIn">List of projects are :<br>
-    I made a website for a Youtuber :AcaDhrix -<a href=" https://www.youtube.com/channel/UCKK2aV6a11B0x1W053z6V4A " target="_blank">Youtuber</a><br>
-     <a href="https://webtechcode1122.github.io/acadhrix/" target="_blank">website of AcaDhrix </a>
-    </p>
-</section>
+    <section id="about-me">
+        <h2 class="animate__animated animate__fadeIn">About Me</h2>
+        <p class="animate__animated animate__fadeIn">I am a UI & UX Developer</p>
+    </section>
 
-<section id="contact-me">
-    <h2 class="animate__animated animate__fadeIn">Contact Me</h2>
-    <p class="animate__animated animate__fadeIn">you can contact me on gmail-
-        <br> arhamjain19609@gmail.com
-    </p>
-</section>
+    <section id="projects">
+        <h2 class="animate__animated animate__fadeIn">Projects</h2>
+        <p class="animate__animated animate__fadeIn">List of projects:<br>
+            I made a website for a YouTuber: AcaDhrix - <a href="https://www.youtube.com/channel/UCKK2aV6a11B0x1W053z6V4A" target="_blank">YouTuber</a><br>
+            <a href="https://webtechcode1122.github.io/acadhrix/" target="_blank">Website of AcaDhrix</a>
+        </p>
+    </section>
 
-<button id="backToTop">Back to Top</button>
+    <section id="contact-me">
+        <h2 class="animate__animated animate__fadeIn">Contact Me</h2>
+        <p class="animate__animated animate__fadeIn">You can contact me on Gmail: <br> arhamjain19609@gmail.com</p>
+    </section>
 
-<footer>
-    <p>&copy; 2024 WebTechCode</p>
-</footer>
+    <button id="backToTop">Back to Top</button>
+    <button id="darkModeToggle" title="Toggle Dark Mode"><i class="fas fa-adjust"></i></button>
 
-<script>
-    // GSAP Animations
-    gsap.from("header", { duration: 1, y: -50, opacity: 0, ease: "bounce" });
-    gsap.from("nav a", {
-        duration: 1,
-        opacity: 0,
-        stagger: 0.3,
-        y: -20,
-        ease: "elastic",
-        delay: 1
-    });
+    <footer>
+        <p>&copy; 2024 WebTechCode</p>
+    </footer>
 
-    gsap.from(".animate__heartBeat", {
-        duration: 1,
-        scale: 0.5,
-        opacity: 0,
-        rotation: 360,
-        ease: "back"
-    });
+    <script>
+        // GSAP Animations
+        gsap.from("header", {
+            duration: 1,
+            y: -50,
+            opacity: 0,
+            ease: "bounce"
+        });
+        gsap.from("nav a", {
+            duration: 1,
+            opacity: 0,
+            stagger: 0.3,
+            y: -20,
+            ease: "elastic",
+            delay: 1
+        });
 
-    // Back to Top Button
-    const backToTopButton = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            backToTopButton.style.display = 'block';
-        } else {
-            backToTopButton.style.display = 'none';
-        }
-    });
-    backToTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+        gsap.from(".animate__heartBeat", {
+            duration: 1,
+            scale: 0.5,
+            opacity: 0,
+            rotation: 360,
+            ease: "back"
+        });
 
-    // Dark Mode Toggle
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    darkModeToggle.addEventListener('click', () => {
-        const currentTheme = document.body.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        document.body.setAttribute('data-theme', newTheme);
-    });
-
-    // ScrollReveal Animations
-    ScrollReveal().reveal('section', {
-        duration: 1000,
-        origin: 'bottom',
-        distance: '50px',
-        delay: 200,
-        reset: true
-    });
-
-    // Particles.js configuration
-    particlesJS('particles-js', {
-        "particles": {
-            "number": {
-                "value": 80,
-                "density": {
-                    "enable": true,
-                    "value_area": 800
-                }
-            },
-            "color": {
-                "value": "#ffffff"
-            },
-            "shape": {
-                "type": "circle",
-                "stroke": {
-                    "width": 0,
-                    "color": "#000000"
-                },
-                "polygon": {
-                    "nb_sides": 5
-                },
-                "image": {
-                    "src": "img/github.svg",
-                    "width": 100,
-                    "height": 100
-                }
-            },
-            "opacity": {
-                "value": 0.5,
-                "random": false,
-                "anim": {
-                    "enable": false,
-                    "speed": 1,
-                    "opacity_min": 0.1,
-                    "sync": false
-                }
-            },
-            "size": {
-                "value": 3,
-                "random": true,
-                "anim": {
-                    "enable": false,
-                    "speed": 40,
-                    "size_min": 0.1,
-                    "sync": false
-                }
-            },
-            "line_linked": {
-                "enable": true,
-                "distance": 150,
-                "color": "#ffffff",
-                "opacity": 0.4,
-                "width": 1
-            },
-            "move": {
-                "enable": true,
-                "speed": 6,
-                "direction": "none",
-                "random": false,
-                "straight": false,
-                "out_mode": "out",
-                "bounce": false,
-                "attract": {
-                    "enable": false,
-                    "rotateX": 600,
-                    "rotateY": 1200
-                }
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
             }
-        },
-        "interactivity": {
-            "detect_on": "canvas",
-            "events": {
-                "onhover": {
-                    "enable": true,
-                    "mode": "repulse"
-                },
-                "onclick": {
-                    "enable": true,
-                    "mode": "push"
-                },
-                "resize": true
-            },
-            "modes": {
-                "grab": {
-                    "distance": 400,
-                    "line_linked": {
-                        "opacity": 1
+        });
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.body.setAttribute('data-theme', newTheme);
+        });
+
+        // ScrollReveal Animations
+        ScrollReveal().reveal('section', {
+            duration: 1000,
+            origin: 'bottom',
+            distance: '50px',
+            delay: 200,
+            reset: true
+        });
+
+        // Particles.js configuration
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
                     }
                 },
-                "bubble": {
-                    "distance": 400,
-                    "size": 40,
-                    "duration": 2,
-                    "opacity": 8,
-                    "speed": 3
+                "color": {
+                    "value": "#ffffff"
                 },
-                "repulse": {
-                    "distance": 200,
-                    "duration": 0.4
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    },
+                    "image": {
+                        "src": "img/github.svg",
+                        "width": 100,
+                        "height": 100
+                    }
                 },
-                "push": {
-                    "particles_nb": 4
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
                 },
-                "remove": {
-                    "particles_nb": 2
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
                 }
-            }
-        },
-        "retina_detect": true
-    });
-</script>
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 400,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
 </body>
+
 </html>
